@@ -1,4 +1,4 @@
-from launch import LaunchDescription
+rom launch import LaunchDescription
 from launch_ros.actions import Node
 
 """
@@ -17,7 +17,15 @@ Hint: Use Node() action with:
 def generate_launch_description():
     return LaunchDescription(
         [
-            # TODO: Add talker node with message_prefix parameter
-            # TODO: Add listener node
+            Node(
+                package='ros2_launch_demo',
+                executable='talker',
+                parameters=[{'message_prefix': 'ROS2'}]
+            ),
+
+            Node(
+                package='ros2_launch_demo',
+                executable='listener'
+            )
         ]
     )
